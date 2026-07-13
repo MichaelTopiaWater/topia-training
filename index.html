@@ -595,7 +595,11 @@ async function submitQuiz() {
 
   const btn = document.getElementById("next-btn");
   btn.textContent = "Submitting...";
-  const data = await apiPost({ action: "submitQuiz", email: userEmail, answers });
+  const answerPairs = moduleData.questions.map((q, i) => ({
+    questionText: q.questionText,
+    answer: answers[i]
+  }));
+  const data = await apiPost({ action: "submitQuiz", email: userEmail, answers: answerPairs });
   if (data.error) { alert(data.error); btn.textContent = "Submit"; return; }
   showResults(data);
 }
