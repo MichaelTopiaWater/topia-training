@@ -464,9 +464,8 @@ function drawCharts(weekRows, lifeRows) {
       labels: lifeRows.map(r => r.department),
       datasets: [{
         data: lifeRows.map(r => r.avgScore),
-        backgroundColor: "#FAF9F6",
-        borderColor: barColors(lifeRows),
-        borderWidth: 2, borderRadius: 4
+        backgroundColor: barColors(lifeRows),
+        borderRadius: 4
       }]
     },
     options: {
