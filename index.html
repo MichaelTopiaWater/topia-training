@@ -408,7 +408,7 @@ async function loadDashboard() {
 function renderDashboard(data) {
   userDept = data.department || "";
   document.getElementById("topic-title").textContent = data.title || "—";
-  document.getElementById("topic-week").textContent = data.week ? ("Week " + data.week) : "";
+  document.getElementById("topic-week").textContent = data.week ? ("Module " + data.week) : "";
 
   // product render
   const box = document.getElementById("render-box");
@@ -452,7 +452,7 @@ function drawCharts(weekRows, lifeRows) {
       responsive: true, maintainAspectRatio: false,
       scales: {
         y: { beginAtZero: true, max: 100, ticks: { callback: v => v + "%", color: "#5F5E5A" }, grid: { color: "#C5C1B5" } },
-        x: { ticks: { color: "#5F5E5A" }, grid: { display: false } }
+        x: { ticks: { color: "#5F5E5A", maxRotation: 90, minRotation: 45, autoSkip: false, font: { size: 10 } }, grid: { display: false } }
       },
       plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.y + "%" } } }
     }
@@ -474,7 +474,7 @@ function drawCharts(weekRows, lifeRows) {
       responsive: true, maintainAspectRatio: false,
       scales: {
         x: { beginAtZero: true, max: 100, ticks: { callback: v => v + "%", color: "#5F5E5A" }, grid: { color: "#C5C1B5" } },
-        y: { ticks: { color: "#5F5E5A" }, grid: { display: false } }
+        y: { ticks: { color: "#5F5E5A", autoSkip: false, font: { size: 10 } }, grid: { display: false } }
       },
       plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.x + "%" } } }
     }
