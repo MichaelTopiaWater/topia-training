@@ -484,6 +484,14 @@ function drawCharts(weekRows, lifeRows) {
 // ====== START TRAINING -> load module, show video ======
 document.getElementById("start-training-btn").addEventListener("click", startTraining);
 
+  function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 async function startTraining() {
   const btn = document.getElementById("start-training-btn");
   btn.textContent = "Loading...";
@@ -491,6 +499,7 @@ async function startTraining() {
   btn.textContent = "Start training";
   if (data.error) { alert(data.error); return; }
   moduleData = data;
+  shuffleArray(moduleData.questions);
   answers = new Array(data.questions.length).fill(null);
   loadVideo();
   show("view-video");
@@ -611,6 +620,7 @@ function showResults(data) {
 // ====== RESULTS ACTIONS ======
 document.getElementById("rewatch-btn").addEventListener("click", () => { loadVideo(); show("view-video"); });
 document.getElementById("retake-btn").addEventListener("click", () => {
+  shuffleArray(moduleData.questions);
   answers = new Array(moduleData.questions.length).fill(null);
   startQuiz();
 });
