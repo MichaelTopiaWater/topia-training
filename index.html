@@ -598,8 +598,8 @@ function showResults(data) {
   document.getElementById("result-pct").textContent = pct + "%";
 
   let msg;
-  if (pct === 100) msg = "Perfect score. You know this product inside out.";
-  else if (pct >= 70) msg = "Solid work. You've got a good handle on this one.";
+  if (pct === 100) msg = "Perfect score! You've really got this topic down.";
+  else if (pct >= 70) msg = "Solid work. You've got a good handle on this topic.";
   else if (pct >= 40) msg = "Not bad — worth a rewatch to lock in the details.";
   else msg = "Give the video another watch and try again — you'll get there.";
   document.getElementById("result-msg").textContent = msg;
